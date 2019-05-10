@@ -29,61 +29,55 @@
       </ul>
     </nav>
         <p>
-            <h1>List of flags:</h1>
+            <h1>List of countries:</h1>
         </p>
     </header>
     <main>
-        <ul>
-            <li>
-                <article class="country-info">
-                    <p>Canada</p>
-                    <img src="img/country-flags/svg/ca.svg">
-                    <details>
-                        The current Canadian flag was raised up in 1965 for the first time. Its author was Dr. George Stanley, who intended to capture several important elements of Canadian history. The central theme of the flag is a maple leaf, which refers to the indigenous
-                        population that has been using the maple sap for centuries, and which still is a traditional Canadian product. Maple leaf became a symbol of Canadian athletes in the 20th century and also a symbol of Canadian soldiers in both world
-                        wars. Red leaf is placed on a white background and the flag is lined with two vertical red stripes. Red and white are referring to historical ties to the UK – it was red and white flag with the St. George's cross which was erected
-                        by John Cabot on Canadian soil in 1497.
-                        </detail>
-                </article>
-            </li>
-            <li>
-                <article class="country-info">
-                    <p>France</p>
-                    <img src="img/country-flags/svg/fr.svg">
-                    <details>
-                        The traditional French red-blue-white tricolor became a symbol of freedom during the French Revolution in the late 18th century. These colors were decorating roundels of revolutionists and the tricolor was carried in 1789 during the conquest of the Bastille,
-                        when political prisoners held by the old regime were freed. This day is considered to be the beginning of the French Revolution, and the tricolor remained in the minds of Frenchmen associated with the creation of modern French
-                        Republic. All three stripes on the flag are displayed vertically and have the same width. The blue stripe is located on the left side of the flag, white in the middle, and the red one on the right side.
-                        </detail>
-                </article>
-            </li>
-            <li>
-                <article class="country-info">
-                    <p>Great Britain</p>
-                    <img src="img/country-flags/svg/gb.svg">
-                    <details>
-                        The design was ordered by King James VI and I to be used on ships on the high seas, and it subsequently came into use as a national flag following the Treaty of Union and Acts of Union 1707, gaining the status of "the Ensign armorial of Great Britain",
-                        the newly created state. It was later adopted by land forces, although the blue of the field used on land-based versions more closely resembled that of the blue of the flag of Scotland. The flag consists of the red cross of Saint
-                        George, patron saint of England, superimposed on the Saltire of Saint Andrew, patron saint of Scotland. Its correct proportions are 3:5. The flag's official use came to an end in 1801 with the creation of the United Kingdom of
-                        Great Britain and Ireland. At that time Saint Patrick's Flag was added to the flag of Great Britain to create the present-day Union Flag.
-                        </detail>
-                </article>
-            </li>
-            <li>
-                <article class="country-info">
-                    <p>Japan</p>
-                    <img src="img/country-flags/svg/jp.svg">
-                    <details>
-                        Japan, or "Land of the rising sun", can feel proud of its flag, whose symbolism could be tracked back by several millennia. The red circle on a white background indicates a rising sun disc - so called Hinomaru in Japanese. The cult of sun enjoyed great
-                        attention there, Japanese emperors were said to be the descendants of a sun goddess Amaterasu. This symbol was drawn by samurais on ornamental fans called "gunsen" in the twelfth century already. In the 15th and 16th century, the
-                        symbol was used as a military insignia and it was displayed on military standards. When Japanese abandoned its policy of isolation in 1870 and began to make contact with other countries, they decided to use this ancient symbol
-                        as the central theme of its national flag.
-                        </detail>
-                </article>
-            </li>
-        </ul>
+        <form class="display-options">
+        <label>
+            Choose number of counries to display:  
+            <input type="number" class="number-of-countries" value="5" min="0" max="100" >
+        </label>
+        <div>
+        <!--Not completed
+        <label>
+            Native name:  
+            <input type="checkbox" class="country-option" id="country-native-name" checked>
+        </label>
+        <label>
+            Capital:  
+            <input type="checkbox" class="country-option" id="country-capital" checked>
+        </label>
+        <label>
+            Region:  
+            <input type="checkbox" class="country-option" id="country-region" checked>
+        </label>
+        <label>
+            Subregion:  
+            <input type="checkbox" class="country-option" id="country-subregion" checked>
+        </label>
+        <label>
+            Population:  
+            <input type="checkbox" class="country-option" id="country-population" checked>
+        </label>
+        <label>
+            Languages:  
+            <input type="checkbox" class="country-option" id="country-languages" checked>
+        </label>
+        <label>
+            Flag:  
+            <input type="checkbox" class="country-option" id="country-flag" checked>
+        </label>
+        -->
+        </div>
+        <button class="change-number">Confirm</button>
+        </form>
+        <section class="countries-and-flags"> </section>
+        
+        <script src="js/list-of-flags.js"> </script>
     </main>
     <footer>
+        <p>Uses <a href="https://restcountries.eu/">https://restcountries.eu/</a> API</p>
         <p>This website has been created for people who want to learn flags and challenge themselves with quizzes.</p>
         <p>Vladyslav Antonov - 2019.</p>
     </footer>
