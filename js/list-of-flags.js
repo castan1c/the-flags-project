@@ -31,11 +31,11 @@ function clearSections (count) {
 function createSectionsForCountries (i, count) {
     for ( ; count > 0; count--) {
         countryArr.push(document.createElement('section'));
-        countryArr[i].classList.add('.country-info');
+        countryArr[i].className = 'country-info';
         countryArr[i].innerHTML = `<br>
             <div class="country-name"> </div>
             <div class="country-native-name">Native name: </div>
-            <img class="country-flag" width="40%"/>
+            <img class="country-flag"/>
             <div class="country-capital">Capital: </div>
             <div class="country-region">Region: </div>
             <div class="country-subregion">Subregion: </div>

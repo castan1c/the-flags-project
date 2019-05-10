@@ -46,14 +46,50 @@ main {
     text-align: center;
     margin:auto;
 }
+/*.country-info {
+    background-color: red;
+    padding: 10px;
+}*/
 footer {
     text-align: center;
     margin-bottom:auto;
-    font-family: 'Indie Flower', cursive;
     font-size:0.8rem;
  }
+ 
 @media (min-width: 550px){
 header nav ul li a p{
     display:block;
 }
+}
+.country-info{
+    padding: 10px;
+    border-color: black;
+    border-width: 2px;
+}
+.country-info img{
+    display: block;
+    width: 100%;
+}
+
+@media(min-width: 550px) {
+    main .countries-and-flags {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap:10px;
+
+    }
+}
+@media(min-width: 660px) {
+    main .countries-and-flags {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap:20px;
+
+    }
+}
+@media(min-width: 800px) {
+    main .countries-and-flags {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap:50px;
+
+    }
 }
