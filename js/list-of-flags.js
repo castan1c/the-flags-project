@@ -3,33 +3,37 @@ let NUMBER_OF_COUNTRIES = 5;
 const countryArr = [];
 const urlParameters = ['name','nativeName','capital','region','subregion', 'population','languages','flag'];
 //const url = 'https://restcountries.eu/rest/v2/all?fields=name;nativeName;capital;region;subregion;population;languages;flag'
-const url = `https://restcountries.eu/rest/v2/all?fields=${urlParameters[0]};${urlParameters[1]};${urlParameters[2]};${urlParameters[3]};${urlParameters[4]};${urlParameters[5]};${urlParameters[6]};${urlParameters[7]}`
-//const countryDisplayParameters = document.querySelectorAll('.country-option');
-
-createSectionsForCountries();
+const url = `https://restcountries.eu/rest/v2/all?fields=${urlParameters[0]};${urlParameters[1]};${urlParameters[2]};${urlParameters[3]};${urlParameters[4]};${urlParameters[5]};${urlParameters[6]};${urlParameters[7]}`;
+createSectionsForCountries(0, NUMBER_OF_COUNTRIES);
 getCountryInfo();
 const number = document.querySelector('.number-of-countries');
 const changeNumberButton = document.querySelector('.change-number');
 changeNumberButton.addEventListener('click', changeNumberOnCLick);
+
 function changeNumberOnCLick(e){
     e.preventDefault();
-    clearSections();
-    NUMBER_OF_COUNTRIES = number.value;
-    createSectionsForCountries();
+    console.log(number.value);
+    if(NUMBER_OF_COUNTRIES > number.value) {
+        clearSections(NUMBER_OF_COUNTRIES - number.value);
+    }
+    else createSectionsForCountries(NUMBER_OF_COUNTRIES, number.value - NUMBER_OF_COUNTRIES);
+    NUMBER_OF_COUNTRIES = Number(number.value);
+    //createSectionsForCountries();
     getCountryInfo();
 }
-function clearSections () {
-    for (let i = NUMBER_OF_COUNTRIES - 1; i >= 0 ; i--) {
+function clearSections (count) {
+    for (let i = NUMBER_OF_COUNTRIES - 1; count > 0 ; i--) {
         countryListSection.removeChild(countryArr[i]);
         countryArr.pop();
+        count--;
     }
 }
-function createSectionsForCountries () {
-    for (let i = 0; i < NUMBER_OF_COUNTRIES; i++) {
+function createSectionsForCountries (i, count) {
+    for ( ; count > 0; count--) {
         countryArr.push(document.createElement('section'));
         countryArr[i].classList.add('.country-info');
         countryArr[i].innerHTML = `<br>
-            <div class="country-name"><h2>Country name: </h2></div>
+            <div class="country-name"> </div>
             <div class="country-native-name">Native name: </div>
             <img class="country-flag" width="40%"/>
             <div class="country-capital">Capital: </div>
@@ -40,6 +44,7 @@ function createSectionsForCountries () {
             <br>`;
         countryListSection.appendChild(countryArr[i]);
         countryArr[i].appendChild(document.createElement('p'));
+        i++;
     }
 }
 
@@ -74,19 +79,19 @@ function getCountryInfo() {
         .then(countryData => {
             for (let i = 0; i < NUMBER_OF_COUNTRIES; i++) {
                 countryArr[i].querySelector('.country-name')
-                    .innerText += countryData[i].name;
+                    .innerText = "Country name: " + countryData[i].name;
                 countryArr[i].querySelector('.country-native-name')
-                    .innerText += countryData[i].nativeName;
+                    .innerText = "Native name: " + countryData[i].nativeName;
                 countryArr[i].querySelector('.country-capital')
-                    .innerText += countryData[i].capital;
+                    .innerText = "Capital: " + countryData[i].capital;
                 countryArr[i].querySelector('.country-region')
-                    .innerText += countryData[i].region;
+                    .innerText = "Region: " + countryData[i].region;
                 countryArr[i].querySelector('.country-subregion')
-                    .innerText += countryData[i].subregion;
+                    .innerText = "Subregion: " + countryData[i].subregion;
                 countryArr[i].querySelector('.country-population')
-                    .innerText += countryData[i].population;
+                    .innerText = "Population: " + countryData[i].population;
                 countryArr[i].querySelector('.country-languages')
-                    .innerText += countryData[i].languages.map(item => item['name']);
+                    .innerText =  "Language: " + countryData[i].languages.map(item => item['name']).join(', ');
                 countryArr[i].querySelector('.country-flag')
                     .src = countryData[i].flag;
             }
