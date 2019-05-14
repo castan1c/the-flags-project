@@ -86,7 +86,7 @@ header nav ul li a p{
 
     }
 }
-@media(min-width: 800px) {
+@media(min-width: 880px) {
     main .countries-and-flags {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap:50px;
