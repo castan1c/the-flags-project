@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="img/icons/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/guess-flag.css">
-    <title>Pick the correct flag</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="img/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/guess-flag.css">
+  <title>Pick the correct flag</title>
 </head>
 
 <body>
@@ -23,27 +23,29 @@
             <p>Learn flags</p><img src="img/icons/icon-windsock.svg" alt="List of countries"></a>
         </li>
         <li>
-          <a href="choose-mode.html">
+          <a href="guess-flag.html">
             <p>Play quiz</p><img src="img/icons/icon-rocket.svg" alt="Start with choosing the mode and difficulty"></a>
         </li>
       </ul>
     </nav>
-    
-        <p>
-            <h1>Pick the correct flag:</h1>
-        </p>
-    </header>
-    <main>
-        <div class="quiz-flag-to-pick"></div>
-        <div class="quiz-flags"></div>
-        <a href="results.html"><img src="img/icons/icon-check.svg"></results></a>
-
-    </main>
-    <footer>
-        <p>This website has been created for people who want to learn flags and challenge themselves with quizzes.</p>
-        <p>Vladyslav Antonov - 2019.</p>
-    </footer>
-    <script src="js/guess-flag.js"></script>
+  </header>
+  <main>
+    <p class="quiz-title">
+      You will need to pick 1 correct flag from 4 listed. Click the button to start the quiz!
+    </p>
+    <div class="quiz-flag-to-pick"></div>
+    <div class="quiz-flags" id="#flags"></div>
+    <div class="start-quiz">
+      <!--<a href="results.html"><img src="img/icons/icon-check.svg"></results></a>-->
+        <img src="img/icons/icon-check.svg" alt="Start the quiz">
+    </div>
+    <div class="results"></div>
+  </main>
+  <footer>
+    <p>This website has been created for people who want to learn flags and challenge themselves with quizzes.</p>
+    <p>Vladyslav Antonov - 2019.</p>
+  </footer>
+  <script src="js/guess-flag.js"></script>
 </body>
 
 </html>
