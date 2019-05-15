@@ -1,7 +1,7 @@
 const countryListSection = document.querySelector('.countries-and-flags');
 let NUMBER_OF_COUNTRIES = 5;
 const countryArr = [];
-const urlParameters = ['name','nativeName','capital','region','subregion', 'population','languages','flag'];
+const urlParameters = ['name', 'nativeName', 'capital', 'region', 'subregion', 'population', 'languages', 'flag'];
 //const url = 'https://restcountries.eu/rest/v2/all?fields=name;nativeName;capital;region;subregion;population;languages;flag'
 const url = `https://restcountries.eu/rest/v2/all?fields=${urlParameters[0]};${urlParameters[1]};${urlParameters[2]};${urlParameters[3]};${urlParameters[4]};${urlParameters[5]};${urlParameters[6]};${urlParameters[7]}`;
 createSectionsForCountries(0, NUMBER_OF_COUNTRIES);
@@ -10,26 +10,31 @@ const number = document.querySelector('.number-of-countries');
 const changeNumberButton = document.querySelector('.change-number');
 changeNumberButton.addEventListener('click', changeNumberOnCLick);
 
-function changeNumberOnCLick(e){
+function changeNumberOnCLick(e) {
     e.preventDefault();
     console.log(number.value);
-    if(NUMBER_OF_COUNTRIES > number.value) {
-        clearSections(NUMBER_OF_COUNTRIES - number.value);
+    if (isNaN(number.value)) alert('Input should be a number');
+    else if (number.value > 250 || number.value < 0) alert('Input should be a number between 0 and 250');
+    else {
+        if (NUMBER_OF_COUNTRIES > number.value) {
+            clearSections(NUMBER_OF_COUNTRIES - number.value);
+        }
+        else createSectionsForCountries(NUMBER_OF_COUNTRIES, number.value - NUMBER_OF_COUNTRIES);
+        NUMBER_OF_COUNTRIES = Number(number.value);
+        getCountryInfo();
     }
-    else createSectionsForCountries(NUMBER_OF_COUNTRIES, number.value - NUMBER_OF_COUNTRIES);
-    NUMBER_OF_COUNTRIES = Number(number.value);
-    //createSectionsForCountries();
-    getCountryInfo();
 }
-function clearSections (count) {
-    for (let i = NUMBER_OF_COUNTRIES - 1; count > 0 ; i--) {
+
+function clearSections(count) {
+    for (let i = NUMBER_OF_COUNTRIES - 1; count > 0; i--) {
         countryListSection.removeChild(countryArr[i]);
         countryArr.pop();
         count--;
     }
 }
-function createSectionsForCountries (i, count) {
-    for ( ; count > 0; count--) {
+
+function createSectionsForCountries(i, count) {
+    for (; count > 0; count--) {
         countryArr.push(document.createElement('section'));
         countryArr[i].className = 'country-info';
         countryArr[i].innerHTML = `<br>
@@ -91,7 +96,7 @@ function getCountryInfo() {
                 countryArr[i].querySelector('.country-population')
                     .innerText = "Population: " + countryData[i].population;
                 countryArr[i].querySelector('.country-languages')
-                    .innerText =  "Language: " + countryData[i].languages.map(item => item['name']).join(', ');
+                    .innerText = "Language: " + countryData[i].languages.map(item => item['name']).join(', ');
                 countryArr[i].querySelector('.country-flag')
                     .src = countryData[i].flag;
             }

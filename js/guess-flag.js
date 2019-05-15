@@ -5,9 +5,10 @@ let flagsArr = [];
 let flagToGuess = 0;
 let answers = [];
 let round = 0;
+let correctAnswers=0;
 const MAX_ROUNDS = 10;
 const flagsContainer = document.querySelector('.quiz-flags');
-const url = 'https://restcountries.eu/rest/v2/all?fields=name;flag;alpha3Code'
+const url = 'https://restcountries.eu/rest/v2/all?fields=name;flag'
 let randomArr = [];
 getFlagsInfo();
 document.querySelector('.start-quiz').addEventListener('click', startQuiz);
@@ -43,6 +44,7 @@ function flagClicked(e) {
                 === flagsArr[flagToGuess].name) {
                     e.target.classList.add('green');
                     answers[round] = true;
+                    correctAnswers++;
     }
     else {
         e.target.classList.add('red');
@@ -65,13 +67,11 @@ function changeFlags () {
     }
     else {
         console.log(answers);
-        console.log(answers.reduce((acc, val) => val?1:0));
-        alert('Game over');
         document.querySelector('.quiz-title').innerText='';
         document.querySelector('.results').innerText 
             = `Congratualions!
             You completed a quiz.
-            Your result is ${answers.reduce((acc, val) => val?1:0)} correct answers from ${MAX_ROUNDS} possible`;
+            Your result is ${correctAnswers} correct answers from ${MAX_ROUNDS} possible`;
         removeFlagsSections();
         document.querySelector('.quiz-flag-to-pick').innerText='';
     }
@@ -95,6 +95,7 @@ function createFlagsSectioins() {
                                     <img class="flag-img">
                                     <div class="flag-name"></div>
                                     `;
+        flagsRenderArr[i].querySelector('.flag-name').hidden=true;
         flagsContainer.appendChild(flagsRenderArr[i]);
     }
 }
